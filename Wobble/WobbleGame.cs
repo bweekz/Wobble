@@ -19,6 +19,7 @@ using Wobble.Platform;
 using Wobble.Platform.Linux;
 using Wobble.Screens;
 using Wobble.Window;
+using Wobble.Screens;
 
 namespace Wobble
 {
@@ -200,6 +201,9 @@ namespace Wobble
             Logger.Update();
 
             base.Update(gameTime);
+
+            if (KeyboardManager.IsFullScreenKeyPressed())
+                Graphics.ToggleFullScreen();
         }
 
         /// <summary>

@@ -41,5 +41,18 @@ namespace Wobble.Input
         /// <param name="k"></param>
         /// <returns></returns>
         public static bool IsUniqueKeyRelease(Keys k) => CurrentState.IsKeyUp(k) && PreviousState.IsKeyDown(k);
+
+        /// <summary>
+        ///     If a key was previously pressed down and then released.
+        /// </summary>
+        /// <returns>The status of the full screen key pressed</returns>
+        public static bool IsFullScreenKeyPressed()
+        {
+            var pressedKey = CurrentState.GetPressedKeys();
+
+            if (pressedKey.Contains(Keys.Enter) && (pressedKey.Contains(Keys.LeftAlt) || pressedKey.Contains(Keys.RightAlt)))
+                return true;
+            return false;
+        }
     }
 }
